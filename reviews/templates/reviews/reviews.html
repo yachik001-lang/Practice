@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Книга отзывов</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 20px auto; padding: 0 20px; }
+        .review { border-left: 4px solid #007bff; padding-left: 15px; margin: 20px 0; }
+        form label { display: block; margin-top: 15px; font-weight: bold; }
+        form input, form textarea { width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box; }
+        button { margin-top: 15px; padding: 10px 20px; background: #007bff; color: white; border: none; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        hr { margin: 30px 0; }
+    </style>
+</head>
+<body>
+    <h1>Книга отзывов</h1>
+
+    {% if reviews %}
+        <h2>Проверенные отзывы:</h2>
+        {% for review in reviews %}
+            <div class="review">
+                <strong>{{ review.full_name }}</strong> ({{ review.email }})<br>
+                {{ review.text|linebreaks }}
+                <small>{{ review.created_at|date:"d.m.Y H:i" }}</small>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Пока нет проверенных отзывов.</p>
+    {% endif %}
+
+    <hr>
+
+    <h2>Оставить свой отзыв</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Отправить</button>
+    </form>
+</body>
+</html>
