@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}Пост #{{ post_id }}{% endblock %}
+
+{% block content %}
+<h1>Пост #{{ post_id }}</h1>
+<p>Это пример страницы поста с ID: {{ post_id }}</p>
+<p>В реальном проекте здесь могла бы быть статья или подробный отзыв.</p>
+{% endblock %}

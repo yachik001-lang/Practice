@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Книга отзывов{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav style="background:#eee; padding:10px;">
+        <a href="{% url 'reviews:home' %}">Главная</a> |
+        <a href="{% url 'reviews:about' %}">О блоге</a> |
+        <a href="{% url 'reviews:reviews_list' %}">Отзывы</a>
+    </nav>
+
+    <main style="padding:20px;">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer style="margin-top:40px; color:#777;">
+        &copy; 2026 Книга отзывов
+    </footer>
+</body>
+</html>
